@@ -2,16 +2,16 @@
 node {
    stage('Code checkout') { // for display purposes
       // Get some code from a GitHub repository
-      checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'ajith', url: 'https://github.com/itrainspartans/maven_app']]])
+     checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'ajith', url: 'https://github.com/itrainspartans/maven_app.git']]])
       }
       
    stage('Build') {
-     withMaven(jdk: 'java', maven: 'Mavan') {
+     withMaven(jdk: 'java', maven: 'mavan') {
       sh 'mvn clean compile'
      } 
    }
    stage('Test') {
-    withMaven(jdk: 'java', maven: 'Mavan') {
+    withMaven(jdk: 'java', maven: 'mavan') {
       sh 'mvn test'
      }  
    }
@@ -22,7 +22,7 @@ node {
 
     //}
    stage('Package') {
-    withMaven(jdk: 'java', maven: 'Mavan') {
+    withMaven(jdk: 'java', maven: 'mavan') {
       sh 'mvn package'
      }  
    }
