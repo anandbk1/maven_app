@@ -4,12 +4,12 @@ node {
       git credentialsId: 'githubID', url: 'https://github.com/itrainspartans/maven_app.git'
    }
    stage('Build') {
-     withMaven(jdk: 'JDK-11.0', maven: 'Maven-3.6.0') {
+     withMaven(jdk: 'java', maven: 'Mavan') {
       sh 'mvn clean compile'
      } 
    }
    stage('Test') {
-    withMaven(jdk: 'JDK-11.0', maven: 'Maven-3.6.0') {
+    withMaven(jdk: 'java', maven: 'Mavan') {
       sh 'mvn test'
      }  
    }
@@ -19,7 +19,7 @@ node {
               }
     }
    stage('Package') {
-    withMaven(jdk: 'JDK-11.0', maven: 'Maven-3.6.0') {
+    withMaven(jdk: 'java', maven: 'Mavan') {
       sh 'mvn package'
      }  
    }
