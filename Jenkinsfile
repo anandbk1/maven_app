@@ -1,7 +1,7 @@
 node {
    stage('Code checkout') { // for display purposes
       // Get some code from a GitHub repository
-      git credentialsId: 'githubID', url: 'https://github.com/itrainspartans/maven_app.git'
+      checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'satyasai', url: 'https://github.com/itrainspartans/maven_app.git']]])
    }
    stage('Build') {
      withMaven(jdk: 'java', maven: 'Mavan') {
