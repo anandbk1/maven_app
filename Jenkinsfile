@@ -13,10 +13,7 @@ node {
       sh 'mvn test'
      }  
    }
-   stage('Sonar CodeAnalysis') {
-      withSonarQubeEnv('itrainspartans') {
-                sh 'mvn clean verify sonar:sonar'
-              }
+
     }
    stage('Package') {
     withMaven(jdk: 'java', maven: 'Mavan') {
