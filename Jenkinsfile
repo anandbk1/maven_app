@@ -15,7 +15,7 @@ node {
      }  
    }
    stage('Sonar CodeAnalysis') {
-     withSonarQubeEnv('itrainspartans') {
+     withSonarQubeEnv(credentialsId: 'sonar') { {
        sh 'mvn clean verify sonar:sonar'
           }
 
