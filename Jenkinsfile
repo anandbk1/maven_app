@@ -3,7 +3,8 @@ node {
    stage('Code checkout') { // for display purposes
       // Get some code from a GitHub repository
    checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'SATYA', url: 'https://github.com/itrainspartans/maven_app.git']]]) 
-   stage('Build') {
+   }
+      stage('Build') {
      withMaven(jdk: 'java', maven: 'Maven')  {
       sh 'mvn clean compile'
      } 
